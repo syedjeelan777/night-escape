@@ -1,0 +1,7 @@
+import data from '../src/data/production/game.json';
+const errors:string[]=[];const ids=(name:string,items:{id:string|number}[])=>{const seen=new Set<string>();for(const item of items){const id=String(item.id);if(!id)errors.push(`${name}: missing ID`);if(seen.has(id))errors.push(`${name}: duplicate ID ${id}`);seen.add(id)}return seen};
+if(data.schemaVersion!==1)errors.push('Unsupported schemaVersion');const enemies=ids('enemies',data.enemies),buildings=ids('buildings',data.buildings);ids('rooms',data.rooms);ids('waves',data.waves);ids('modes',data.modes);
+for(const wave of data.waves)for(const group of wave.groups){if(!enemies.has(group.enemyId))errors.push(`wave ${wave.id}: missing enemy ${group.enemyId}`);if(group.count<=0||group.spawnIntervalMs<=0)errors.push(`wave ${wave.id}: invalid group values`)}
+for(const b of data.buildings)if(b.cost<0||b.range<0||b.cooldownMs<0)errors.push(`building ${b.id}: invalid value`);for(const e of data.enemies)if(e.maxHealth<=0||e.speed<=0||e.damage<0)errors.push(`enemy ${e.id}: invalid value`);
+for(const room of data.rooms){if(room.width<=0||room.height<=0)errors.push(`room ${room.id}: invalid dimensions`);if(room.buildSlots.length<1)errors.push(`room ${room.id}: no build slots`)}
+if(!buildings.size)errors.push('No building definitions');if(errors.length){console.error(errors.join('\n'));process.exit(1)}console.log(`Data valid: ${data.rooms.length} rooms, ${data.enemies.length} enemies, ${data.buildings.length} buildings, ${data.waves.length} waves.`);
