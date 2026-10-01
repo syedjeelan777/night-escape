@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "evidence": "WEB_ADAPTATION",
+  "note": "Playable browser-adaptation values. Named reference research files were not supplied; no value in this file claims reference fidelity.",
+  "world": { "width": 1920, "height": 1080, "cellSize": 60, "simulationStepMs": 16.6667, "maxFrameDeltaMs": 100 },
+  "player": { "maxHealth": 100, "speed": 225, "interactRange": 92 },
+  "hunter": { "maxHealth": 350, "speed": 112, "escapeDamage": 34, "attackRange": 46, "attackCooldownMs": 900 },
+  "economy": { "startingGold": 80, "repairCost": 20, "repairAmount": 65 },
+  "rooms": [
+    { "id":"room-nw", "name":"Moon Room", "x":110, "y":120, "width":460, "height":350, "doorX":570, "doorY":280, "bedX":245, "bedY":225, "buildSlots":[[390,195],[390,320],[240,370]] },
+    { "id":"room-ne", "name":"Candle Room", "x":1350, "y":120, "width":460, "height":350, "doorX":1350, "doorY":280, "bedX":1630, "bedY":225, "buildSlots":[[1480,195],[1480,320],[1630,370]] },
+    { "id":"room-sw", "name":"Raven Room", "x":110, "y":610, "width":460, "height":350, "doorX":570, "doorY":770, "bedX":245, "bedY":710, "buildSlots":[[390,680],[390,835],[240,850]] },
+    { "id":"room-se", "name":"Lantern Room", "x":1350, "y":610, "width":460, "height":350, "doorX":1350, "doorY":770, "bedX":1630, "bedY":710, "buildSlots":[[1480,680],[1480,835],[1630,850]] }
+  ],
+  "doorLevels": [
+    {"level":1,"maxHealth":320,"upgradeCost":100},
+    {"level":2,"maxHealth":520,"upgradeCost":220},
+    {"level":3,"maxHealth":780,"upgradeCost":null}
+  ],
+  "bedLevels": [
+    {"level":1,"goldPerSecond":5,"upgradeCost":90},
+    {"level":2,"goldPerSecond":9,"upgradeCost":180},
+    {"level":3,"goldPerSecond":15,"upgradeCost":null}
+  ],
+  "buildings": [
+    {"id":"turret","name":"Moonshot","kind":"TURRET","cost":60,"color":16765770,"damage":20,"range":285,"cooldownMs":650,"upgradeCost":95},
+    {"id":"tesla","name":"Storm Coil","kind":"TESLA","cost":100,"color":7398655,"damage":14,"range":180,"cooldownMs":1200,"upgradeCost":145},
+    {"id":"mine","name":"Shade Mine","kind":"MINE","cost":45,"color":16553984,"damage":75,"range":62,"cooldownMs":6500,"upgradeCost":70},
+    {"id":"radar","name":"Owl Radar","kind":"RADAR","cost":80,"color":7856639,"damage":0,"range":400,"cooldownMs":0,"upgradeCost":110}
+  ],
+  "enemies": [
+    {"id":"wisp","name":"Wisp","maxHealth":55,"speed":76,"damage":12,"attackRange":42,"attackCooldownMs":900,"reward":8,"color":6989004},
+    {"id":"brute","name":"Gloom Brute","maxHealth":150,"speed":48,"damage":27,"attackRange":48,"attackCooldownMs":1250,"reward":20,"color":13456452},
+    {"id":"boss","name":"The Night Keeper","maxHealth":650,"speed":42,"damage":42,"attackRange":65,"attackCooldownMs":1050,"reward":150,"color":16734771}
+  ],
+  "waves": [
+    {"id":1,"groups":[{"enemyId":"wisp","count":5,"spawnIntervalMs":1050}]},
+    {"id":2,"groups":[{"enemyId":"wisp","count":7,"spawnIntervalMs":850},{"enemyId":"brute","count":2,"spawnIntervalMs":1800}]},
+    {"id":3,"groups":[{"enemyId":"wisp","count":9,"spawnIntervalMs":700},{"enemyId":"brute","count":4,"spawnIntervalMs":1400}]},
+    {"id":4,"groups":[{"enemyId":"wisp","count":10,"spawnIntervalMs":600},{"enemyId":"brute","count":6,"spawnIntervalMs":1100},{"enemyId":"boss","count":1,"spawnIntervalMs":1000}],"boss":"boss"}
+  ],
+  "modes": [
+    {"id":"calm","name":"Twilight","enemyHealth":0.82,"enemyDamage":0.8,"enemySpeed":0.94,"reward":1.1},
+    {"id":"normal","name":"Midnight","enemyHealth":1,"enemyDamage":1,"enemySpeed":1,"reward":1},
+    {"id":"hard","name":"Blackout","enemyHealth":1.28,"enemyDamage":1.25,"enemySpeed":1.08,"reward":1.15}
+  ]
+}
